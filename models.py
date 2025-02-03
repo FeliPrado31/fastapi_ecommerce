@@ -3,6 +3,14 @@ from sqlalchemy.orm import relationship
 from database import Base
 from datetime import datetime
 
+
+class Cliente(Base):
+    __tablename__ = "cliente"
+    id = Column(Integer, primary_key=True)
+    nombre = Column(String(100), nullable=False)
+    user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    pedidos = relationship('Pedido', backref='cliente', lazy=True)
+
 class Producto(Base):
     __tablename__ = "producto"
     id = Column(Integer, primary_key=True)
