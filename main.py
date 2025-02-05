@@ -8,8 +8,6 @@ from sqlalchemy import select
 
 app = FastAPI()
 
-
-
 @app.get("/pedidos/", response_model=list[PedidoResponse])
 async def obtener_pedidos(
         fecha_inicial: str = Query(..., description="Fecha inicial (YYYY-MM-DD)"),
